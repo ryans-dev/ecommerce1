@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Traits\PhpFlasher;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,6 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return true;
+        $group_ids = Auth::check() ? Auth::user()->getGroups() : [1];
+
+        $product_data = Product::withPrices()->get();
+
+        return view('pages.default.productspage', compact('product_data'));
     }
 }
