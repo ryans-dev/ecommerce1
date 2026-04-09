@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
         $group_ids = Auth::check() ? Auth::user()->getGroups() : [1];
 
-        $product_data = Product::withPrices()->get();
+        $product_data = Product::withPrices()->paginate(9);
 
         return view('pages.default.productspage', compact('product_data'));
     }
