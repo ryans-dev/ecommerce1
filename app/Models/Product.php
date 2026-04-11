@@ -44,7 +44,17 @@ class Product extends Model
         $query->where('products.id', $id);
     }
 
+    public function scopeFilter($query, $values = [])
+    {
+        $query->searchTitle($values['search'] ?? '');
+    }
 
+    public function scopeSearchTitle($query, $value)
+    {
+        if (!empty($value)) {
+            $query->where('title', 'like', "%{$value}%");
+        }
+    }
 
 
     /**
