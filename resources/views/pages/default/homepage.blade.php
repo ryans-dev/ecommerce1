@@ -16,8 +16,9 @@
                                 <span class="subheading">#Best Sellers</span>
                                 <div class="horizontal">
                                     <h1 class="mb-4 mt-3">Best Sellers {{ date('Y') }}</h1>
-                                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the
-                                        necessary regelialia. It is a paradisematic country.</p>
+                                    <p class="mb-4">Discover our curated collection of premium plants, featuring best sellers loved
+                                        by plant enthusiasts and easy-care favourites for every space. </p> <p>Explore our new arrivals
+                                            and bring home fresh, vibrant greenery to elevate your home or workspace..</p>
 
                                     <p><a href="#" class="btn-custom">Discover Now</a></p>
                                 </div>
@@ -40,8 +41,9 @@
                                 <span class="subheading">#New Arrival</span>
                                 <div class="horizontal">
                                     <h1 class="mb-4 mt-3">New Collection {{ date('Y') }}</h1>
-                                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the
-                                        necessary regelialia. It is a paradisematic country.</p>
+                                    <p class="mb-4">Discover our curated collection of premium plants, featuring best sellers loved
+                                        by plant enthusiasts and easy-care favourites for every space. </p> <p>Explore our new arrivals
+                                            and bring home fresh, vibrant greenery to elevate your home or workspace..</p>
 
                                     <p><a href="#" class="btn-custom">Discover Now</a></p>
                                 </div>
@@ -53,7 +55,7 @@
         </div>
     </section>
 
-    <section class="ftco-section ftco-no-pt ftco-no-pb">
+    {-- <section class="ftco-section ftco-no-pt ftco-no-pb">
         <div class="container">
             <div class="row no-gutters ftco-services">
                 <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
@@ -63,8 +65,8 @@
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Affordable Shipping</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                                the blind texts.</p>
+                            <p>We take special care in every order, ensuring plants are carefully packaged and shipped through
+                                a process designed to keep them healthy and protected until they reach you.</p>
                         </div>
                     </div>
                 </div>
@@ -75,8 +77,8 @@
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Support Customer</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                                the blind texts.</p>
+                            <p>We’re here to help whenever you need us, offering friendly and responsive support to ensure
+                                your plant shopping experience is smooth and worry-free.</p>
                         </div>
                     </div>
                 </div>
@@ -87,8 +89,8 @@
                         </div>
                         <div class="media-body">
                             <h3 class="heading">Secure Payments</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                                the blind texts.</p>
+                            <p>Your payments are processed safely and securely, giving you complete peace of mind every
+                                time you shop with us.</p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +98,7 @@
         </div>
     </section>
 
-    <section class="ftco-section bg-light">
+    {{-- <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
@@ -251,7 +253,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="ftco-section ftco-counter img" id="section-counter"
         style="background-image: url('{{ asset('template_default/images/bg_6.jpg') }}');">
@@ -278,8 +280,8 @@
                         <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                             <div class="block-18 text-center">
                                 <div class="text">
-                                    <strong class="number" data-number="100">0</strong>
-                                    <span>Brands</span>
+                                    <strong class="number" data-number="5000">0</strong><strong>+</strong>
+                                    <span>Plants</span>
                                 </div>
                             </div>
                         </div>
@@ -310,15 +312,14 @@
                 <div class="col-md-7 py-md-5 wrap-about pb-md-5 ftco-animate fadeInUp ftco-animated">
                     <div class="heading-section-bold mb-4 mt-md-5">
                         <div class="ml-md-0">
-                            <h2 class="mb-4">Established Since 1975</h2>
+                            <h2 class="mb-4">Established Since 1996</h2>
                         </div>
                     </div>
                     <div class="pb-md-5 pb-4">
-                        <p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy
-                            Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where
-                            they abused her for their.</p>
-                        <p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy
-                            Writers ambushed her.</p>
+                        <p>With decades of experience, we have built a trusted name by consistently providing quality
+                            plants and exceptional service to our customers.</p>
+                                <p>Our commitment to growth and care has allowed us to evolve with our community, delivering
+                                    healthy, vibrant plants for homes and businesses alike.</p>
                         <p><a href="#" class="btn btn-primary">Shop now</a></p>
                     </div>
                 </div>
@@ -337,7 +338,7 @@
                             </div>
                             <div class="text">
                                 <h3>Affordable Shipping</h3>
-                                <p class="mb-0">Separated they live in. A small river named Duden flows</p>
+                                <p class="mb-0">Carefully packed to protect every plant.</p>
                             </div>
                         </div>
                         <div class="services-2 p-4 d-flex ftco-animate">
@@ -346,7 +347,7 @@
                             </div>
                             <div class="text">
                                 <h3>Valuable Gifts</h3>
-                                <p class="mb-0">Separated they live in. A small river named Duden flows</p>
+                                <p class="mb-0">Perfect plant gifts for any occasion.</p>
                             </div>
                         </div>
                         <div class="services-2 p-4 d-flex ftco-animate">
@@ -354,8 +355,8 @@
                                 <span class="flaticon-payment-security"></span>
                             </div>
                             <div class="text">
-                                <h3>All Day Support</h3>
-                                <p class="mb-0">Separated they live in. A small river named Duden flows</p>
+                                <h3>Secure Delivery</h3>
+                                <p class="mb-0">Safe shipping so plants arrive in great condition.</p>
                             </div>
                         </div>
                         <div class="services-2 p-4 d-flex ftco-animate">
@@ -364,7 +365,7 @@
                             </div>
                             <div class="text">
                                 <h3>All Day Support</h3>
-                                <p class="mb-0">Separated they live in. A small river named Duden flows</p>
+                                <p class="mb-0">Friendly help whenever you need it.</p>
                             </div>
                         </div>
                     </div>
@@ -372,8 +373,7 @@
                 <div class="col-lg-7">
                     <div class="heading-section ftco-animate mb-5">
                         <h2 class="mb-4">Our satisfied customer says</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-                            blind texts. Separated they live in</p>
+                        <p>Real feedback from plant lovers who trust us to bring greenery into their homes.</p>
                     </div>
                     <div class="carousel-testimony owl-carousel">
                         <div class="item">
@@ -385,9 +385,9 @@
                                     </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-4 pl-4 line">My Monstera arrived in perfect condition and is already
+                                        thriving in my living room. Great service!.</p>
+                                    <p class="name">Peter P.</p>
                                     <span class="position">Marketing Manager</span>
                                 </div>
                             </div>
@@ -395,15 +395,15 @@
                         <div class="item">
                             <div class="testimony-wrap">
                                 <div class="user-img mb-4"
-                                    style="background-image: url({{ asset('template_default/images/choose-2.jpg') }})">
+                                    style="background-image: url({{ asset('template_default/images/person_2.jpg') }})">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-4 pl-4 line">I bought a Snake Plant and it’s super low maintenance,
+                                        just like they said. Perfect for beginners.</p>
+                                    <p class="name">Tony S.</p>
                                     <span class="position">Interface Designer</span>
                                 </div>
                             </div>
@@ -411,15 +411,15 @@
                         <div class="item">
                             <div class="testimony-wrap">
                                 <div class="user-img mb-4"
-                                    style="background-image: url({{ asset('template_default/images/person-3.jpg') }})">
+                                    style="background-image: url({{ asset('template_default/images/person_3.jpg') }})">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-4 pl-4 line">The Peace Lily I ordered is beautiful and healthy. It even
+                                        started flowering within weeks!.</p>
+                                    <p class="name">Walter W.</p>
                                     <span class="position">UI Designer</span>
                                 </div>
                             </div>
@@ -427,15 +427,15 @@
                         <div class="item">
                             <div class="testimony-wrap">
                                 <div class="user-img mb-4"
-                                    style="background-image: url({{ asset('template_default/images/person-1.jpg') }})">
+                                    style="background-image: url({{ asset('template_default/images/person_4.jpg') }})">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-4 pl-4 line">Fast delivery and well-packaged plants.
+                                        My Pothos looks amazing on my desk.</p>
+                                    <p class="name">Harry P.</p>
                                     <span class="position">Web Developer</span>
                                 </div>
                             </div>
@@ -443,15 +443,15 @@
                         <div class="item">
                             <div class="testimony-wrap">
                                 <div class="user-img mb-4"
-                                    style="background-image: url({{ asset('template_default/images/person-1.jpg') }})">
+                                    style="background-image: url({{ asset('template_default/images/person_5.jpg') }})">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-4 pl-4 line">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-4 pl-4 line">I ordered a Fiddle Leaf Fig and it completely transformed my space.
+                                        Definitely buying again.</p>
+                                    <p class="name">Ron W.</p>
                                     <span class="position">System Analyst</span>
                                 </div>
                             </div>
@@ -462,7 +462,7 @@
         </div>
     </section>
 
-    <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+    {{-- <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
         <div class="parallax-img d-flex align-items-center">
             <div class="container">
                 <div class="row d-flex justify-content-center py-5">
@@ -482,7 +482,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
 </x-mylayouts.layout-default>

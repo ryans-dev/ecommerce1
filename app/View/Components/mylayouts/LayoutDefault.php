@@ -16,7 +16,7 @@ class LayoutDefault extends Component
      */
     public function __construct($store = null, $title = 'Store', $hideBanner = false)
     {
-        $this->store = $store ?? config('app.store_name', 'eCommerce');
+        $this->store = $store ?? config('app.store_name', 'Plant World');
         $this->title = $title;
         $this->hideBanner = $hideBanner;
     }
