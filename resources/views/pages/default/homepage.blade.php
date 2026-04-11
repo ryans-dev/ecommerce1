@@ -20,7 +20,7 @@
                                         by plant enthusiasts and easy-care favourites for every space. </p> <p>Explore our new arrivals
                                             and bring home fresh, vibrant greenery to elevate your home or workspace..</p>
 
-                                    <p><a href="#" class="btn-custom">Discover Now</a></p>
+                                    <p><a href="{{ route('store.index') }}" class="btn-custom">Discover Now</a></p>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                         by plant enthusiasts and easy-care favourites for every space. </p> <p>Explore our new arrivals
                                             and bring home fresh, vibrant greenery to elevate your home or workspace..</p>
 
-                                    <p><a href="#" class="btn-custom">Discover Now</a></p>
+                                    <p><a href="{{ route('store.index') }}" class="btn-custom">Discover Now</a></p>
                                 </div>
                             </div>
                         </div>
@@ -320,7 +320,7 @@
                             plants and exceptional service to our customers.</p>
                                 <p>Our commitment to growth and care has allowed us to evolve with our community, delivering
                                     healthy, vibrant plants for homes and businesses alike.</p>
-                        <p><a href="#" class="btn btn-primary">Shop now</a></p>
+                        <p><a href="{{ route('store.index') }}" class="btn btn-primary">Shop now</a></p>
                     </div>
                 </div>
             </div>
