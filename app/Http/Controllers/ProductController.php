@@ -25,9 +25,10 @@ class ProductController extends Controller
         $product_data = ProductFilter::withPrices()
             ->filter($values)
             ->paginate(9);
+        $category_data = Product::distinct('category')->pluck('category');
 
         // $product_data = Product::withPrices()->filter($values)->paginate(9);
 
-        return view('pages.default.productspage', compact('product_data'));
+        return view('pages.default.productspage', compact('product_data', 'category_data'));
     }
 }
