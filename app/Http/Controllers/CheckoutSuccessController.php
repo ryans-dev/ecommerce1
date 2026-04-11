@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\OrderPaid;
 use App\Helpers\StripeCheckoutSuccess;
 use App\Helpers\TierHelper;
+use App\Models\Cart;
 use App\Models\Order;
 use App\Traits\PhpFlasher;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,9 @@ class CheckoutSuccessController extends Controller
         if (!$successful) {
             abort(404);
         }
+
+        Cart::where('user_id', Auth::id())->delete();
+
 
         // FEATURE::Tiers - Event/Listener to update user after an order
         $order = Order::findOrFail($stripe_checkout->order_id);
