@@ -130,7 +130,7 @@
                                         </div>
                                         <div class="desc">
                                             <h4>
-                                                <span class="text-left">Jacob Doe</span>
+                                                <span class="text-left">Spiderman</span>
                                                 <span
                                                     class="text-right">{{ \Carbon\Carbon::now()->subDays(rand(0, 2))->format('d F Y') }}
                                                 </span>
@@ -146,8 +146,8 @@
                                                 <span class="text-right"><a href="#" class="reply"><i
                                                             class="icon-reply"></i></a></span>
                                             </p>
-                                            <p>When she reached the first hills of the Italic Mountains, she had a last
-                                                view back on the skyline of her hometown Bookmarksgrov</p>
+                                            <p>Great quality and arrived in perfect condition. It looks even better in
+                                                person and was easy to set up.</p>
                                         </div>
                                     </div>
                                     <div class="review">
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="desc">
                                             <h4>
-                                                <span class="text-left">Chris Johnson</span>
+                                                <span class="text-left">Iron Man</span>
                                                 <span
                                                     class="text-right">{{ \Carbon\Carbon::now()->subDays(rand(3, 5))->format('d F Y') }}
                                                 </span>
@@ -172,8 +172,7 @@
                                                 <span class="text-right"><a href="#" class="reply"><i
                                                             class="icon-reply"></i></a></span>
                                             </p>
-                                            <p>When she reached the first hills of the Italic Mountains, she had a last
-                                                view back on the skyline of her hometown Bookmarksgrov</p>
+                                            <p>Healthy, well-packaged, and exactly as described. Really happy with this purchase.</p>
                                         </div>
                                     </div>
                                     <div class="review">
@@ -182,7 +181,7 @@
                                         </div>
                                         <div class="desc">
                                             <h4>
-                                                <span class="text-left">William Smith</span>
+                                                <span class="text-left">Heisenberg</span>
                                                 <span
                                                     class="text-right">{{ \Carbon\Carbon::now()->subDays(rand(6, 7))->format('d F Y') }}
                                                 </span>
@@ -198,8 +197,7 @@
                                                 <span class="text-right"><a href="#" class="reply"><i
                                                             class="icon-reply"></i></a></span>
                                             </p>
-                                            <p>When she reached the first hills of the Italic Mountains, she had a last
-                                                view back on the skyline of her hometown Bookmarksgrov</p>
+                                            <p>Beautiful addition to my space. Low maintenance and thriving so far—definitely recommend!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +273,7 @@
 
 
     {{-- Recommended Products --}}
-    <section class="ftco-section bg-light">
+    {{-- <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
@@ -446,7 +444,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- Recommended Products --}}
 
 

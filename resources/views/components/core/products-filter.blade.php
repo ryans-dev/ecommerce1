@@ -21,9 +21,9 @@
                             <label for="max_price">Prices (Lower Than):</label>
                             <select class="form-control" id="max_price" name="lower_than">
                                 <option value="0">All</option>
+                                <option value="100">Lower Than 100</option>
                                 <option value="200">Lower Than 200</option>
-                                <option value="400">Lower Than 400</option>
-                                <option value="600">Lower Than 600</option>
+                                <option value="300">Lower Than 300</option>
                             </select>
                         </div>
                     </div>
@@ -32,9 +32,9 @@
                             <label for="rating">Prices (Greater Than):</label>
                             <select class="form-control" id="rating" name="greater_than">
                                 <option value="0">All</option>
+                                <option value="100">Greater Than 100</option>
                                 <option value="200">Greater Than 200</option>
-                                <option value="400">Greater Than 400</option>
-                                <option value="600">Greater Than 600</option>
+                                <option value="300">Greater Than 300</option>
                             </select>
                         </div>
                     </div>
