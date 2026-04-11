@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "title": "Est corporis sed odio quia dolores",
-        "short_description": "Dolorum id eos voluptatem quia consequatur. Quas dolor similique est et.",
-        "full_description": "Itaque harum vero accusamus excepturi quidem. Sed saepe consequuntur rem eum quasi omnis. Molestias et tempore error deserunt itaque illo. Veritatis eum consequuntur facere quidem cumque magni. Illo culpa ea odio odit exercitationem. Accusantium id autem adipisci nam qui at. Ipsam incidunt fugit laboriosam sint. Veniam in aut qui aliquid. Sed et quo excepturi doloribus consequatur ipsum. Excepturi facere odio officiis quasi ut.",
-        "price": "391.00",
+        "title": "IPHONE",
+        "short_description": "i phone",
+        "full_description": "<p>Itaque harum vero accusamus excepturi quidem. Sed saepe consequuntur rem eum quasi omnis. Molestias et tempore error deserunt itaque illo. Veritatis eum consequuntur facere quidem cumque magni. Illo culpa ea odio odit exercitationem. Accusantium id autem adipisci nam qui at. Ipsam incidunt fugit laboriosam sint. Veniam in aut qui aliquid. Sed et quo excepturi doloribus consequatur ipsum. Excepturi facere odio officiis quasi ut.<\/p>",
+        "price": "900.00",
         "quantity": 50,
         "image_path": "\/images\/products\/",
         "image_name": "iphone1-2.jpg",
@@ -12,7 +12,7 @@
         "classification": "default",
         "status": "active",
         "created_at": "2026-02-21 07:17:07",
-        "updated_at": "2026-04-09 01:47:07"
+        "updated_at": "2026-04-09 02:09:31"
     },
     {
         "id": 2,

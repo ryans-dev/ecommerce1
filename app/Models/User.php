@@ -4,12 +4,15 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Filament\Panel;
-use Illuminate\Notifications\Notifiable;
+use App\Models\tier\Tier;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -68,6 +71,24 @@ class User extends Authenticatable implements FilamentUser
 
 
     /**
+     * The tier the user belongs to.
+     */
+    public function tier(): BelongsTo
+    {
+        return $this->belongsTo(Tier::class, 'tier_id');
+    }
+
+    /**
+     * Get all of the orders for the User.
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+
+
+    /**
      *  =============== SCOPES  ===============
      */
 
@@ -78,7 +99,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function getGroups(): array
     {
-        $group_ids = [1];
+        $group_ids = [$this->tier->id];
 
         return $group_ids;
     }
