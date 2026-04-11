@@ -104,7 +104,7 @@
                             <div class="p-4">
                                 <h3 class="mb-4">{{ $data->title }}</h3>
                                 <p>{{ $data->short_description }}</p>
-                                <p>{{ $data->full_description }}</p>
+                                <div>{!! $data->full_description !!}</div>
                                 <p>
                                     Available: {{ $data->quantity }} in stock
                                     <br>
@@ -117,7 +117,7 @@
                             <div class="p-4">
                                 <h3 class="mb-4">Manufactured By {{ Str::before($data->title, ' ') }}</h3>
                                 <p>{{ $data->short_description }}</p>
-                                <p>{{ $data->full_description }}</p>
+                                <div>{!! $data->full_description !!}</div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
