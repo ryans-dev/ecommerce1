@@ -81,13 +81,17 @@ class CheckoutPaymentController extends Controller
 
         // Create order
         $order->user_id = $user->id;
-        $order->order_no = '1234';
+
+        $lastOrder = Order::latest()->first();
+        $order->order_no = $lastOrder
+            ? $lastOrder->order_no + 1
+            : 1234;
+
         $order->subtotal = $cart_data->getSubtotal();
         $order->total = $cart_data->getTotal();
         $order->payment_provider = $insert_data['payment_provider'];
         $order->payment_id = $insert_data['payment_id'];
         $order->shipping_id = 1;
-        $order->shipping_address_id = 1;
         $order->billing_address_id = 1;
         $order->payment_status = 'unpaid';
         $order->save();

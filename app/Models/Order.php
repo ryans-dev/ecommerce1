@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use App\Models\OrderProduct;
+use App\Models\Shipping;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
     use HasFactory;
 
-
     /**
-     * The products that belong to the Order
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * Products in order
      */
     public function products(): BelongsToMany
     {
@@ -25,9 +25,27 @@ class Order extends Model
             ->withTimestamps();
     }
 
-
+    /**
+     * Order line items
+     */
     public function order_products(): HasMany
     {
         return $this->hasMany(OrderProduct::class, 'order_id');
+    }
+
+    /**
+     * Shipping relationship (FIX)
+     */
+    public function shipping(): BelongsTo
+    {
+        return $this->belongsTo(Shipping::class);
+    }
+
+    /**
+     * Scope paid orders
+     */
+    public function scopePaidOrders($query, $status = 'paid')
+    {
+        return $query->where('payment_status', $status);
     }
 }

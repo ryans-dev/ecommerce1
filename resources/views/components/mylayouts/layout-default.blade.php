@@ -80,7 +80,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 <a class="dropdown-item" href="{{ route('store.index') }}">Store</a>
                                 <a class="dropdown-item" href="{{ route('cart.index') }}">Cart</a>
-                                <a class="dropdown-item" href="#">Order History</a>
+                                <a class="dropdown-item" href="{{ route('order-history.index') }}">Order History</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

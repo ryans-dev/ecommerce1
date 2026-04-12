@@ -5,6 +5,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckoutPaymentController;
 use App\Http\Controllers\CheckoutSuccessController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\tiers\TierController;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout/{payment}/testing', [CheckoutPaymentController::class, 'index'])->name('checkout.success.testing');
 
     Route::get('/checkout/success/{id}', [CheckoutSuccessController::class, 'index'])->name('checkout.success');
+
+    // Route to show all orders
+    Route::get('/order-history', [OrderHistoryController::class, 'index'])->name('order-history.index');
+
+    // Route to show details for an order
+    Route::get('/order-history/{id}', [OrderHistoryController::class, 'show'])->name('order-history.show');
 });
 
 
