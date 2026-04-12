@@ -89,7 +89,7 @@
                             role="tab" aria-controls="v-pills-1" aria-selected="true">Description</a>
 
                         <a class="nav-link ftco-animate mr-lg-1" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-                            role="tab" aria-controls="v-pills-2" aria-selected="false">Manufacturer</a>
+                            role="tab" aria-controls="v-pills-2" aria-selected="false">Care Instructions</a>
 
                         <a class="nav-link ftco-animate" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
                             aria-controls="v-pills-3" aria-selected="false">Reviews</a>
@@ -115,9 +115,8 @@
 
                         <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
                             <div class="p-4">
-                                <h3 class="mb-4">Manufactured By {{ Str::before($data->title, ' ') }}</h3>
-                                <p>{{ $data->short_description }}</p>
-                                <div>{!! $data->full_description !!}</div>
+                                <h3 class="mb-4">{{ $data->title }}</h3>
+                                <p>{{ $data->care_instructions }}</p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">

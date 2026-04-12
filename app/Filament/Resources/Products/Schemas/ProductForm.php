@@ -24,6 +24,9 @@ class ProductForm
                 RichEditor::make('full_description')
                     ->required()
                     ->columnSpanFull(),
+                Textarea::make('care_instructions')
+                    ->required()
+                    ->columnSpanFull(),
                 TextInput::make('price')
                     ->required()
                     ->numeric()

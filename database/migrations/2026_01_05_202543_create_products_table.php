@@ -17,6 +17,7 @@ return new class() extends Migration {
             $table->string('title', 100);
             $table->text('short_description');
             $table->text('full_description');
+            $table->text('care_instructions');
             $table->decimal('price', 7, 2)->default(0);
             $table->integer('quantity')->default(20);
             $table->string('image_path', 100);
