@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckoutPaymentController;
 use App\Http\Controllers\CheckoutSuccessController;
+use App\Http\Controllers\DataAnalyticsController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
@@ -25,6 +26,10 @@ Route::get('/details/{id}', [DetailController::class, 'index'])->name('store.det
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('shop.details');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/data-analytics', [DataAnalyticsController::class, 'index'])->name('data.analytics');
+    // Printable version
+    Route::get('/data-analytics/printable', [DataAnalyticsController::class, 'printable'])->name('data.analytics.printable');
+
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
     Route::put('/cart', [CartController::class, 'store'])->name('cart.store');

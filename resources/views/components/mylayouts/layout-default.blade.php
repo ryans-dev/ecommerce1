@@ -69,10 +69,12 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="{{ route('home.index') }}" class="nav-link">Home</a></li>
                     @auth
-                    <li class="nav-item"><a href="{{ route('filament.admin.pages.dashboard') }}" class="nav-link">Dashboard</a></li>
+                        @if(auth()->user()->role === 'admin')
+                            <li class="nav-item"><a href="{{ route('filament.admin.pages.dashboard') }}" class="nav-link">Dashboard</a></li>
+                            <li class="nav-item"><a href="{{ route('data.analytics') }}" class="nav-link">Analytics</a></li>
+                        @endif
                     @endauth
                     <li class="nav-item"><a href="{{ route('store.index') }}" class="nav-link">Store</a></li>
-
                     @auth
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" aria-haspopup="true"

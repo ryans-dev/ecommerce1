@@ -92,6 +92,7 @@ class CheckoutPaymentController extends Controller
         $order->payment_provider = $insert_data['payment_provider'];
         $order->payment_id = $insert_data['payment_id'];
         $order->shipping_id = 1;
+        $order->shipping_address_id = 1;
         $order->billing_address_id = 1;
         $order->payment_status = 'unpaid';
         $order->save();
