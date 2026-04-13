@@ -12,7 +12,7 @@
                             <th>No.</th>
                             <th>Order #</th>
                             <th>Date</th>
-                            <th><>Total</th>
+                            <th>Total</th>
                             <th>Action</th>
                         </tr>
                     </thead>
