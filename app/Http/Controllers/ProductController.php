@@ -22,7 +22,7 @@ class ProductController extends Controller
 
         $values = $request->query();
 
-        $product_data = ProductFilter::withPrices()
+        $product_data = ProductFilter::with(['reviews'])->withPrices()
             ->filter($values)
             ->paginate(9);
         $category_data = Product::distinct('category')->pluck('category');

@@ -10,20 +10,23 @@
                 </div>
                 <div class="col-lg-7 product-details pl-md-5 ftco-animate">
                     <h3>{{ $data->title }}</h3>
+                    @php
+                        $reviews = $data->reviews ?? collect();
+                        $totalReviews = $reviews->count();
+                        $averageRating = $reviews->avg('rating') ?: 0;
+                    @endphp
                     <div class="rating d-flex">
                         <p class="text-left mr-4">
-                            <a href="#" class="mr-2">5.0</a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                            <a href="#" class="mr-2">{{ number_format($averageRating, 1) }}</a>
+                            @for ($i = 1; $i <= 5; $i++)
+                                <a href="#"><span class="ion-ios-star{{ $i <= round($averageRating) ? '' : '-outline' }}"></span></a>
+                            @endfor
                         </p>
                         <p class="text-left mr-4">
-                            <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
+                            <a href="#" class="mr-2" style="color: #000;">{{ $totalReviews }} <span style="color: #bbb;">Reviews</span></a>
                         </p>
                         <p class="text-left mr-4">
-                            <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
+                            <a href="#" class="mr-2" style="color: #000;">{{ $data->quantity }} <span style="color: #bbb;">In stock</span></a>
                         </p>
                         <p class="text-left">
                             <a href="#" class="mr-2" style="color: #000;">{{ Str::ucfirst($data->category) }} <span
@@ -122,142 +125,102 @@
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
                             <div class="row p-4">
                                 <div class="col-md-7">
-                                    <h3 class="mb-4">23 Reviews</h3>
-                                    <div class="review">
-                                        <div class="user-img"
-                                            style="background-image: url({{ asset('template_default/images/person_1.jpg') }})">
+                                    <h3 class="mb-4">{{ $totalReviews }} Review{{ $totalReviews === 1 ? '' : 's' }}</h3>
+
+                                    @if ($totalReviews === 0)
+                                        <p class="mb-4">No reviews yet. Be the first to share your experience.</p>
+                                    @endif
+
+                                    @foreach ($reviews as $index => $review)
+                                        <div class="review">
+                                            <div class="user-img"
+                                                style="background-image: url({{ asset('template_default/images/person_' . (($index % 5) + 1) . '.jpg') }})">
+                                            </div>
+                                            <div class="desc">
+                                                <h4>
+                                                    <span class="text-left">{{ $review->name }}</span>
+                                                    <span class="text-right">{{ $review->created_at->format('d F Y') }}</span>
+                                                </h4>
+                                                <p class="star">
+                                                    <span>
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i class="ion-ios-star{{ $i <= $review->rating ? '' : '-outline' }}"></i>
+                                                        @endfor
+                                                    </span>
+                                                </p>
+                                                <p>{{ $review->comment }}</p>
+                                            </div>
                                         </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <span class="text-left">Spiderman</span>
-                                                <span
-                                                    class="text-right">{{ \Carbon\Carbon::now()->subDays(rand(0, 2))->format('d F Y') }}
-                                                </span>
-                                            </h4>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                </span>
-                                                <span class="text-right"><a href="#" class="reply"><i
-                                                            class="icon-reply"></i></a></span>
-                                            </p>
-                                            <p>Great quality and arrived in perfect condition. It looks even better in
-                                                person and was easy to set up.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review">
-                                        <div class="user-img"
-                                            style="background-image: url({{ asset('template_default/images/person_2.jpg') }})">
-                                        </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <span class="text-left">Iron Man</span>
-                                                <span
-                                                    class="text-right">{{ \Carbon\Carbon::now()->subDays(rand(3, 5))->format('d F Y') }}
-                                                </span>
-                                            </h4>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star-outline"></i>
-                                                </span>
-                                                <span class="text-right"><a href="#" class="reply"><i
-                                                            class="icon-reply"></i></a></span>
-                                            </p>
-                                            <p>Healthy, well-packaged, and exactly as described. Really happy with this purchase.</p>
-                                        </div>
-                                    </div>
-                                    <div class="review">
-                                        <div class="user-img"
-                                            style="background-image: url('{{ asset('template_default/images/person_3.jpg') }}')">
-                                        </div>
-                                        <div class="desc">
-                                            <h4>
-                                                <span class="text-left">Heisenberg</span>
-                                                <span
-                                                    class="text-right">{{ \Carbon\Carbon::now()->subDays(rand(6, 7))->format('d F Y') }}
-                                                </span>
-                                            </h4>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star-outline"></i>
-                                                    <i class="ion-ios-star-outline"></i>
-                                                </span>
-                                                <span class="text-right"><a href="#" class="reply"><i
-                                                            class="icon-reply"></i></a></span>
-                                            </p>
-                                            <p>Beautiful addition to my space. Low maintenance and thriving so far—definitely recommend!</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="col-md-4">
                                     <div class="rating-wrap">
-                                        <h3 class="mb-4">Give a Review</h3>
-                                        <p class="star">
-                                            <span>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                (57%)
-                                            </span>
-                                            <span>20 Reviews</span>
-                                        </p>
-                                        <p class="star">
-                                            <span>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                (29%)
-                                            </span>
-                                            <span>10 Reviews</span>
-                                        </p>
-                                        <p class="star">
-                                            <span>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                (14%)
-                                            </span>
-                                            <span>5 Reviews</span>
-                                        </p>
-                                        <p class="star">
-                                            <span>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                ( 0%)
-                                            </span>
-                                            <span>0 Reviews</span>
-                                        </p>
-                                        <p class="star">
-                                            <span>
-                                                <i class="ion-ios-star"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                <i class="ion-ios-star-outline"></i>
-                                                ( 0%)
-                                            </span>
-                                            <span>0 Reviews</span>
-                                        </p>
+                                        <h3 class="mb-4">Review Summary</h3>
+
+                                        @if (session('success'))
+                                            <div class="alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+
+                                        @for ($stars = 5; $stars >= 1; $stars--)
+                                            @php
+                                                $count = $reviews->where('rating', $stars)->count();
+                                                $percent = $totalReviews ? round($count / $totalReviews * 100) : 0;
+                                            @endphp
+                                            <p class="star">
+                                                <span>
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <i class="ion-ios-star{{ $i <= $stars ? '' : '-outline' }}"></i>
+                                                    @endfor
+                                                    ({{ $percent }}%)
+                                                </span>
+                                                <span>{{ $count }} Review{{ $count === 1 ? '' : 's' }}</span>
+                                            </p>
+                                        @endfor
+
+                                        <h3 class="mb-4">Leave a Review</h3>
+                                        <form action="{{ route('reviews.store', ['id' => $data->id]) }}" method="POST" class="bg-white p-4 comment-form">
+                                            @csrf
+
+                                            @guest
+                                                <div class="form-group">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
+                                                    @error('name')<span class="text-danger small">{{ $message }}</span>@enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                                                    @error('email')<span class="text-danger small">{{ $message }}</span>@enderror
+                                                </div>
+                                            @endguest
+                                            @auth
+                                                <input type="hidden" name="name" value="{{ auth()->user()->name }}">
+                                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                            @endauth
+
+                                            <div class="form-group">
+                                                <label for="rating">Rating</label>
+                                                <select id="rating" name="rating" class="form-control" required>
+                                                    <option value="">Select rating</option>
+                                                    @for ($i = 5; $i >= 1; $i--)
+                                                        <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>{{ $i }} star{{ $i > 1 ? 's' : '' }}</option>
+                                                    @endfor
+                                                </select>
+                                                @error('rating')<span class="text-danger small">{{ $message }}</span>@enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="comment">Comment</label>
+                                                <textarea id="comment" name="comment" cols="30" rows="4" class="form-control" required>{{ old('comment') }}</textarea>
+                                                @error('comment')<span class="text-danger small">{{ $message }}</span>@enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary py-3 px-5">Submit Review</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

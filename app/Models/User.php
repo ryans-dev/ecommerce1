@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\tier\Tier;
+use App\Models\Review;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -84,6 +85,14 @@ class User extends Authenticatable implements FilamentUser
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    /**
+     * Get all of the reviews written by the User.
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
     }
 
 

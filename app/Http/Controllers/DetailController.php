@@ -15,7 +15,7 @@ class DetailController extends Controller
     {
         $group_ids = Auth::check() ? Auth::user()->getGroups() : [1];
 
-        $data = Product::singleProduct($id)->get()->first();
+        $data = Product::with(['reviews.user'])->singleProduct($id)->firstOrFail();
 
         return view('pages.default.detailspage', compact('data'));
     }

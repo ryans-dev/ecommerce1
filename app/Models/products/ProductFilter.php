@@ -3,14 +3,24 @@
 namespace App\Models\products;
 
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductFilter extends Product
 {
     use HasFactory;
 
     protected $table = 'products';
+
+    /**
+     * Override the reviews relationship to use the correct foreign key
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'product_id');
+    }
 
     public function scopeFilter($query, $values = [])
     {
@@ -37,11 +47,11 @@ class ProductFilter extends Product
     }
 
     public function scopePriceLowerThan($query, $value)
-{
-    if (!empty($value) && $value > 0) {
-        return $query->where('price', '<=', $value);
+    {
+        if (!empty($value) && $value > 0) {
+            return $query->where('price', '<=', $value);
+        }
     }
-}
 
     public function scopeCategoryFor($query, $value)
     {

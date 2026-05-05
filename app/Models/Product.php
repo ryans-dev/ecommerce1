@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Helpers\ProductCollectionHelper;
+use App\Models\Review;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -29,10 +31,15 @@ class Product extends Model
      *  =============== RELATIONSHIPS  ===============
      */
 
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 
-    /**
-     *  =============== SCOPES  ===============
-     */
+    public function averageRating(): float
+    {
+        return round($this->reviews()->avg('rating') ?: 0, 1);
+    }
 
     public function scopeWithPrices(Builder $query, array $group_ids = [1])
     {

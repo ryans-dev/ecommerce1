@@ -8,6 +8,7 @@ use App\Http\Controllers\DataAnalyticsController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\tiers\TierController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,27 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/store', [ProductController::class, 'index'])->name('store.index');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop.index');
 
-Route::get('/details/{id}', [DetailController::class, 'index'])->name('store.details');
+Route::get('/contact', function () {
+    return view('pages.default.contactpage');
+})->name('contact.index');
+
+Route::post('/contact', function (\Illuminate\Http\Request $request) {
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'message' => 'required|string|max:2000',
+    ]);
+
+    return back()->with('success', 'Thank you for contacting us. We will reply shortly.');
+})->name('contact.send');
+
+Route::view('/shipping-information', 'pages.default.shipping-information')->name('shipping.information');
+Route::view('/returns-exchange', 'pages.default.returns-exchange')->name('returns.exchange');
+Route::view('/terms-conditions', 'pages.default.terms-conditions')->name('terms.conditions');
+Route::view('/privacy-policy', 'pages.default.privacy-policy')->name('privacy.policy');
+
+Route::post('/details/{id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('shop.details');
 
 Route::middleware(['auth'])->group(function () {

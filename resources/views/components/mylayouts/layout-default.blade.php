@@ -94,7 +94,7 @@
                             </div>
                         </li>
                     @endauth
-                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="{{ route('contact.index') }}" class="nav-link">Contact</a></li>
 
 
                     @guest
@@ -183,10 +183,10 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2">Menu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Store</a></li>
-                            <li><a href="#" class="py-2 d-block">About</a></li>
-                            <li><a href="#" class="py-2 d-block">Journal</a></li>
-                            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="{{ route('store.index') }}" class="py-2 d-block">Store</a></li>
+                            <li><a href="{{ route('home.index') }}" class="py-2 d-block">About</a></li>
+                            <li><a href="{{ route('store.index') }}" class="py-2 d-block">Journal</a></li>
+                            <li><a href="{{ route('contact.index') }}" class="py-2 d-block">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -195,14 +195,14 @@
                         <h2 class="ftco-heading-2">Help</h2>
                         <div class="d-flex">
                             <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-                                <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-                                <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-                                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                                <li><a href="{{ route('shipping.information') }}" class="py-2 d-block">Shipping Information</a></li>
+                                <li><a href="{{ route('returns.exchange') }}" class="py-2 d-block">Returns &amp; Exchange</a></li>
+                                <li><a href="{{ route('terms.conditions') }}" class="py-2 d-block">Terms &amp; Conditions</a></li>
+                                <li><a href="{{ route('privacy.policy') }}" class="py-2 d-block">Privacy Policy</a></li>
                             </ul>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">FAQs</a></li>
-                                <li><a href="#" class="py-2 d-block">Contact</a></li>
+                                <li><a href="{{ route('contact.index') }}" class="py-2 d-block">FAQs</a></li>
+                                <li><a href="{{ route('contact.index') }}" class="py-2 d-block">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -220,8 +220,8 @@
                                     Trinidad and Tobago
                                 </span>
                             </li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 868 123 4768                                          210</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span
+                                <li><a href="tel:+18681234768"><span class="icon icon-phone"></span><span class="text">+ 868 123 4768 210</span></a></li>
+                                <li><a href="mailto:ryan@planthubtt.com"><span class="icon icon-envelope"></span><span
                                             class="text">ryan@planthubtt.com</span></a></li>
                             </ul>
                         </div>

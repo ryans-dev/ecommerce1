@@ -28,11 +28,13 @@
                                                 </div>
                                                 <div class="rating">
                                                     <p class="text-right mb-0">
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                        @php
+                                                            $avgRating = $data->averageRating();
+                                                        @endphp
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <a href="#"><span class="ion-ios-star{{ $i <= $avgRating ? '' : '-outline' }}"></span></a>
+                                                        @endfor
+                                                        <span class="ml-1">({{ number_format($avgRating, 1) }})</span>
                                                     </p>
                                                 </div>
                                             </div>
