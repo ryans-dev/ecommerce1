@@ -46,6 +46,30 @@ class CartController extends Controller
     }
 
     /**
+     * Update the cart item quantity.
+     */
+    public function update(Request $request, string $id)
+    {
+        $validated = $request->validate([
+            'quantity' => 'required|integer|min:0',
+        ]);
+
+        if ($validated['quantity'] <= 0) {
+            Cart::destroy($id);
+            $this->flashError('Product removed from cart');
+            return redirect()->route('cart.index')->with('message', 'Product removed from cart');
+        }
+
+        Cart::where('id', $id)
+            ->where('user_id', Auth::id())
+            ->update(['quantity' => $validated['quantity'], 'updated_at' => now()]);
+
+        $this->flashSuccess('Cart quantity updated');
+
+        return redirect()->route('cart.index')->with('message', 'Cart quantity updated');
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function addToCartFromStore(Request $request)

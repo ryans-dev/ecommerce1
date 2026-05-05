@@ -41,7 +41,7 @@
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="icon-phone2"></span></div>
-                            <span class="text">+ 868 123 4567</span>
+                            <span class="text">+ 868 779 1996</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
@@ -220,7 +220,7 @@
                                     Trinidad and Tobago
                                 </span>
                             </li>
-                                <li><a href="tel:+18681234768"><span class="icon icon-phone"></span><span class="text">+ 868 123 4768 210</span></a></li>
+                                <li><a href="tel:+18687791996"><span class="icon icon-phone"></span><span class="text">+ 868 779 1996</span></a></li>
                                 <li><a href="mailto:ryan@planthubtt.com"><span class="icon icon-envelope"></span><span
                                             class="text">ryan@planthubtt.com</span></a></li>
                             </ul>
