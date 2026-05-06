@@ -218,5 +218,4 @@ class StripeCheckout
     {
         dd($this->checkout_session);
     }
-
 } // end Class
