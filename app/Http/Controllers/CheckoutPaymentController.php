@@ -120,7 +120,7 @@ class CheckoutPaymentController extends Controller
 
         // Redirect
         if ($payment == 'stripe') {
-            return redirect($stripe_checkout->getUrl());
+            return redirect()->away($stripe_checkout->getUrl());
         }
 
         dd('Payment was successful during testing');

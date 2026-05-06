@@ -33,6 +33,7 @@ class StripeCheckout
         $YOUR_DOMAIN = url('');
         $this->stripe_checkout_data = [
             'mode' => 'payment',
+            'payment_method_types' => ['card'],
             'success_url' => $YOUR_DOMAIN . '/checkout/success/' . self::URL_ID,
             'cancel_url' => $YOUR_DOMAIN . '/checkout',
         ];
@@ -50,6 +51,7 @@ class StripeCheckout
     public function addProducts(Collection $products_data)
     {
         $line_items = [];
+
         foreach ($products_data as $data) {
             $line_items[] = [
                 'price_data' => [
@@ -58,12 +60,13 @@ class StripeCheckout
                         'name' => $data->title,
                         'images' => ['https://img.freepik.com/free-photo/shopping-cart-front-side_187299-40118.jpg?w=826&t=st=1694476992~exp=1694477592~hmac=ed69117d05f541bbc1b719146a75df3ceba0afeef9797d4bafb4c4faaa90437d'],
                     ],
-                    'unit_amount' => $data->getPrice() * 100,
+                    'unit_amount' => (int) round($data->getPrice() * 100),
                 ],
                 'quantity' => $data->pivot->quantity,
             ];
-            $this->stripe_checkout_data['line_items'] = $line_items;
         }
+
+        $this->stripe_checkout_data['line_items'] = $line_items;
     }
 
     /**
@@ -73,9 +76,9 @@ class StripeCheckout
      */
     public function createSession()
     {
-        header('Content-Type: application/json');
         $this->checkout_session = $this->stripe->checkout->sessions->create($this->stripe_checkout_data);
-        header("HTTP/1.1 303 See Other");
+
+        return $this->checkout_session;
     }
 
     /**
@@ -169,7 +172,7 @@ class StripeCheckout
      */
     public function isCheckoutCompleted($checkout_session)
     {
-        return $checkout_session->status = 'complete' && $checkout_session->payment_status = 'paid';
+        return $checkout_session->status === 'complete' && $checkout_session->payment_status === 'paid';
     }
 
     /**

@@ -37,6 +37,10 @@ class StripeCheckoutSuccess
         $stripe_helper = new StripeCheckout();
         $session = $stripe_helper->getCheckoutOrder($session_id);
 
+        if (!$session || !$stripe_helper->isCheckoutCompleted($session)) {
+            return false;
+        }
+
         // Extracts data from stripe
         $order_completed_data = $stripe_helper->getOrderCompletedData($session);
 

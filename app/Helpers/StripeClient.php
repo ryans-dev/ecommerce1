@@ -6,11 +6,12 @@ class StripeClient
 {
     public static function getClient()
     {
-        try {
-            return new \Stripe\StripeClient(env('STRIPE_SECRET', false));
-        } catch (\Exception $e) {
-            echo 'Invalid API key';
-            exit;
+        $secret = trim(env('STRIPE_SECRET', ''));
+
+        if (empty($secret)) {
+            throw new \RuntimeException('Stripe secret key is not configured. Please set STRIPE_SECRET in your .env file.');
         }
+
+        return new \Stripe\StripeClient($secret);
     }
 }
