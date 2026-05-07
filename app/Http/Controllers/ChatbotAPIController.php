@@ -11,22 +11,22 @@ class ChatbotAPIController extends Controller
     public function sendMessage(Request $request)
     {
         $message = $request->input('message', '');
-        
+
         if (empty($message)) {
             return response()->json(['message' => 'Please enter a message.']);
         }
 
         try {
             $botman = app('botman');
-            
+
             // Register conversation
             $botman->hears('.*', function (BotMan $bot) {
                 $bot->startConversation(new PlantChatbotConversation());
             });
-            
+
             // Process the message
             $botman->listen();
-            
+
             // Return a success response
             return response()->json(['message' => 'Message processed successfully.']);
         } catch (\Exception $e) {

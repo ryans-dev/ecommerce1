@@ -20,7 +20,7 @@ class BotManMiddleware
     protected function setupBotMan()
     {
         $botman = app('botman');
-        
+
         // Capture all messages
         $botman->hears('.*', function (BotMan $bot) {
             $bot->startConversation(new \App\Conversations\PlantChatbotConversation());
