@@ -31,4 +31,13 @@ class ProductController extends Controller
 
         return view('pages.default.productspage', compact('product_data', 'category_data'));
     }
+
+    /**
+     * Display a single product
+     */
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('pages.default.product-detail', compact('product'));
+    }
 }

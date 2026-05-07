@@ -61,7 +61,12 @@
                                             <td class="price">${{ app('CustomHelper')->formatPrice($data->getPrice()) }}</td>
 
                                             <td class="quantity">
-                                                {{ $data->pivot->quantity }}
+                                                <form action="{{ route('cart.update', ['id' => $data->pivot->id]) }}" method="POST" class="d-flex align-items-center">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <input type="number" name="quantity" value="{{ $data->pivot->quantity }}" min="1" class="form-control text-center" style="width: 80px;">
+                                                    <button type="submit" class="btn btn-sm btn-primary ml-2">Update</button>
+                                                </form>
                                             </td>
 
                                             <td class="total">

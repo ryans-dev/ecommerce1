@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
+
     <title>{{ $store }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -41,7 +44,7 @@
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
                                     class="icon-phone2"></span></div>
-                            <span class="text">+ 868 123 4567</span>
+                            <span class="text">+ 868 779 1996</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
@@ -183,10 +186,10 @@
                     <div class="ftco-footer-widget mb-4 ml-md-5">
                         <h2 class="ftco-heading-2">Menu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Store</a></li>
+                            <li><a href="{{ route('home.index') }}" class="py-2 d-block">Store</a></li>
                             <li><a href="#" class="py-2 d-block">About</a></li>
-                            <li><a href="#" class="py-2 d-block">Journal</a></li>
-                            <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                            <li><a href="#"" class="py-2 d-block">Journal</a></li>
+                            <li><a href="{{ route('contact') }}" class="py-2 d-block">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -195,14 +198,14 @@
                         <h2 class="ftco-heading-2">Help</h2>
                         <div class="d-flex">
                             <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-                                <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-                                <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-                                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                                <li><a href="{{ route('shipping.information') }}" class="py-2 d-block">Shipping Information</a></li>
+                                <li><a href="{{ route('returns.exchange') }}" class="py-2 d-block">Returns &amp; Exchange</a></li>
+                                <li><a href="{{ route('terms.conditions') }}" class="py-2 d-block">Terms &amp; Conditions</a></li>
+                                <li><a href="{{ route('privacy.policy') }}" class="py-2 d-block">Privacy Policy</a></li>
                             </ul>
                             <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">FAQs</a></li>
-                                <li><a href="#" class="py-2 d-block">Contact</a></li>
+                                <li><a href="{{ route('faqs') }}" class="py-2 d-block">FAQs</a></li>
+                                <li><a href="{{ route('contact') }}" class="py-2 d-block">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -220,8 +223,8 @@
                                     Trinidad and Tobago
                                 </span>
                             </li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+ 868 123 4768                                          210</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span
+                                <li><a href="tel:+8687791996"><span class="icon icon-phone"></span><span class="text">+ 868 779 1996</span></a></li>
+                                <li><a href="mailto:ryan@planthubtt.com"><span class="icon icon-envelope"></span><span
                                             class="text">ryan@planthubtt.com</span></a></li>
                             </ul>
                         </div>
@@ -247,7 +250,8 @@
     </footer>
     {{-- END footer --}}
 
-
+        <!-- BotMan Chatbot Widget -->
+    @include('components.chatbot.widget')
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -273,6 +277,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{{ asset('template_default/js/google-map.js') }}"></script>
     <script src="{{ asset('template_default/js/main.js') }}"></script>
+
+
 
 </body>
 

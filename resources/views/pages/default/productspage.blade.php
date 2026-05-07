@@ -28,11 +28,8 @@
                                                 </div>
                                                 <div class="rating">
                                                     <p class="text-right mb-0">
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                        {!! $data->getStarRating() !!}
+                                                        <span class="ml-2 small text-muted">({{ $data->getReviewCount() }})</span>
                                                     </p>
                                                 </div>
                                             </div>

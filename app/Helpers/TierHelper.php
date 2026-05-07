@@ -5,21 +5,28 @@ namespace App\Helpers;
 use App\Models\Order;
 use App\Models\tier\Tier;
 use App\Models\User;
+use Carbon\Carbon;
 
 class TierHelper
 {
     private $is_valid = false;
     public $spending_before = 0;
     public $spending = 0;
+    public $points = 0;
     public $tier_before;
     public $tier;
+    public $nickname = '';
+    public $current_rewards = '';
     public $tier_upgraded = 0;
-    public $next_tier; // next tier available
-    public $max_tier; // max tier available
+    public $next_tier;
+    public $next_tier_nickname = '';
+    public $next_rewards = '';
+    public $max_tier;
     public $next_tier_amount = 0;
     public $next_tier_percent = 0;
     public $max_tier_amount = 0;
     public $max_tier_percent = 0;
+    public $badges = [];
     private $user;
     private $testing = false; //true/false
 
@@ -47,8 +54,11 @@ class TierHelper
     public function getUserTier()
     {
         $this->spending = $this->getUserSpending($this->user);
-
+        $this->points = $this->getUserPoints();
         $this->tier = $this->getTier($this->spending);
+        $this->nickname = $this->getTierNickname($this->tier);
+        $this->current_rewards = $this->getTierReward($this->tier);
+        $this->badges = $this->generateGardenBadges();
     }
 
     /**
@@ -80,6 +90,8 @@ class TierHelper
             $this->next_tier = $this->getNextTier($this->spending);
 
             if ($this->next_tier) {
+                $this->next_tier_nickname = $this->getTierNickname($this->next_tier);
+                $this->next_rewards = $this->getTierReward($this->next_tier);
                 $this->nextTierProgress($this->next_tier);
             }
 
@@ -175,7 +187,110 @@ class TierHelper
      */
     public function calculateNextTierPercent($total_spending, $next_tier_spending)
     {
-        return (int) (($total_spending / $next_tier_spending) * 100);
+        if (empty($next_tier_spending)) {
+            return 0;
+        }
+
+        $percent = (int) (($total_spending / $next_tier_spending) * 100);
+
+        return max(0, min(100, $percent));
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return int
+     */
+    public function getUserPoints(): int
+    {
+        if (isset($this->user->points) && is_numeric($this->user->points)) {
+            return (int) $this->user->points;
+        }
+
+        return (int) round($this->spending / 10);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Tier $tier
+     * @return string
+     */
+    public function getTierNickname(Tier $tier): string
+    {
+        $title = strtolower($tier->title);
+
+        return match (true) {
+            str_contains($title, 'tier 1') || str_contains($title, '1') => 'Seedling',
+            str_contains($title, 'tier 2') || str_contains($title, '2') => 'Sprout',
+            str_contains($title, 'tier 3') || str_contains($title, '3') => 'Canopy',
+            default => 'Garden Guardian',
+        };
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Tier $tier
+     * @return string
+     */
+    public function getTierReward(Tier $tier): string
+    {
+        $title = strtolower($tier->title);
+
+        return match (true) {
+            str_contains($title, 'tier 1') || str_contains($title, '1') => 'Early access to plant care tips and starter discounts.',
+            str_contains($title, 'tier 2') || str_contains($title, '2') => 'Higher savings, seasonal plant bundles, and faster shipping.',
+            str_contains($title, 'tier 3') || str_contains($title, '3') => 'Exclusive garden gifts, priority support, and premium care guides.',
+            default => 'Special garden perks and exclusive rewards.',
+        };
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function generateGardenBadges(): array
+    {
+        $badges = [];
+        $ordersCount = $this->user->orders()->count();
+
+        $badges[] = [
+            'icon' => 'fa-seedling',
+            'name' => 'Seed Starter',
+            'description' => 'Welcome to the garden. Your first purchase planted the seed.',
+            'earned_at' => Carbon::now()->subDays(min(30, max(1, $ordersCount))),
+        ];
+
+        if ($this->spending >= 1000) {
+            $badges[] = [
+                'icon' => 'fa-sun',
+                'name' => 'Sun Seeker',
+                'description' => 'You have unlocked brighter growth with steady spending.',
+                'earned_at' => Carbon::now()->subDays(15),
+            ];
+        }
+
+        if ($this->spending >= 2000) {
+            $badges[] = [
+                'icon' => 'fa-leaf',
+                'name' => 'Bloom Builder',
+                'description' => 'Your garden is thriving — you have earned premium plant benefits.',
+                'earned_at' => Carbon::now()->subDays(7),
+            ];
+        }
+
+        if ($ordersCount >= 3) {
+            $badges[] = [
+                'icon' => 'fa-wifi',
+                'name' => 'Potting Pro',
+                'description' => 'Three or more orders show you are cultivating a healthy garden.',
+                'earned_at' => Carbon::now()->subDays(3),
+            ];
+        }
+
+        return $badges;
     }
 
     /**

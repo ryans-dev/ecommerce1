@@ -72,4 +72,26 @@ class CartController extends Controller
 
         return redirect()->route('cart.index')->with('message', "Product removed from cart");
     }
+
+    /**
+     * Update the quantity of a cart item.
+     */
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $cartItem = Cart::findOrFail($id);
+
+        if ($cartItem->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $cartItem->update(['quantity' => $request->quantity]);
+
+        $this->flashSuccess('Cart updated');
+
+        return redirect()->route('cart.index')->with('message', 'Cart updated successfully');
+    }
 }
